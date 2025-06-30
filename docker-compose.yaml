@@ -1,0 +1,8 @@
+services:
+  language-tutor-app:
+    build: .
+    container_name: language-tutor-app
+    ports:
+      - 8501:8501
+    volumes:
+      - ./language-tutor-app:/app
