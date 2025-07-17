@@ -12,7 +12,7 @@ LANGUAGE = "Dutch"
 SYSTEM_PROMPT = f"""You are a a language tutor, for the {LANGUAGE} language. 
                     The user will provide a word to you, and you must reply back with the following things, in the specified structure.
                     * For each possible parts of speech applicable for that word
-                    ** The corresponding phonemization
+                    ** The corresponding phonemization in IPA form
                     ** For each meaning of the word as that particular part of speech
                     *** An example sentence in {LANGUAGE} for the meaning
                     Structure your response clearly, and do not ask follow-up questions"""
@@ -25,7 +25,7 @@ with st.container():
 
     if word:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": word}

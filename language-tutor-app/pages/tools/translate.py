@@ -9,7 +9,7 @@ from streamlit import session_state as ss
 def submit_1(client, prompt):
     def callback():
         response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4o",
                 messages=[
                     {"role": "system", "content": prompt},
                     {"role": "user", "content": ss['text_area_1']}
@@ -23,7 +23,7 @@ def submit_1(client, prompt):
 def submit_2(client, prompt):
     def callback():
         response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4o",
                 messages=[
                     {"role": "system", "content": prompt},
                     {"role": "user", "content": ss['text_area_2']}
@@ -41,10 +41,12 @@ LANGUAGE_1 = "Dutch"
 LANGUAGE_2 = "English"
 SYSTEM_PROMPT_1 = f"""You are a a language tutor, for the {LANGUAGE_1} language. 
                     The user will provide some text to you, and you must respond with the translation to {LANGUAGE_2}. 
+                    Do not add any extra text to the response, apart from the translation.
                     Structure your response clearly, and do not ask follow-up questions."""
 
 SYSTEM_PROMPT_2 = f"""You are a a language tutor, for the {LANGUAGE_2} language. 
                     The user will provide some text to you, and you must respond with the translation to {LANGUAGE_1}. 
+                    Do not add any extra text to the response, apart from the translation.
                     Structure your response clearly, and do not ask follow-up questions."""
 
 ss.setdefault('text_area_1', '')
